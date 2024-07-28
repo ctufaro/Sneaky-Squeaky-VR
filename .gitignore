@@ -1,0 +1,80 @@
+# This .gitignore file should be placed at the root of your Unity project directory
+
+# Ignore the entire Library folder (excluding the /Assets folder)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Mm]emoryCaptures/
+[Pp]lugins/
+
+# Avoid ignoring important build folders
+!/[Aa]ssets/**/Plugins/
+!/[Aa]ssets/**/Plugins/**/*.{dll,dylib,so}
+!/[Aa]ssets/**/StreamingAssets/
+!/[Aa]ssets/**/StreamingAssets/**/*
+
+# Ignore auto-generated VS/VSCode project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+
+# Ignore Unity metadata files
+*.pidb.meta
+*.pdb.meta
+
+# Ignore user-specific files
+*.swp
+*.lock
+.DS_Store
+._*
+*.log
+*.wlk
+.idea/
+.vscode/
+
+# Ignore build folders
+[Bb]uilds/
+[Bb]uild/
+[Bb]uilds/Data/
+[Bb]uilds/Temp/
+
+# Ignore crash reports
+CrashReports/
+
+# Ignore Unity auto-generated files
+unity.generated.cs
+
+# Ignore Asset Store tools
+[Aa]ssets/AssetStoreTools*
+
+# Ignore JetBrains Rider specific files
+.idea/
+*.sln.iml
+
+# Ignore Rider project files
+*.DotSettings.user
+
+# Ignore Python scripts (if any)
+*.pyc
+__pycache__/
+
+# Ignore Windows-specific files
+Thumbs.db
+ehthumbs.db
+.vs/
