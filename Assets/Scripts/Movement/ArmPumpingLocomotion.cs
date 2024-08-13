@@ -14,12 +14,24 @@ public class ArmPumpingLocomotion : MonoBehaviour
     private XRController leftController;
     private XRController rightController;
 
+    private Rigidbody rb;  // Reference to the Rigidbody component
+
     void Start()
     {
         leftController = SetupController(leftHandNode);
         rightController = SetupController(rightHandNode);
         leftHandPrevPos = GetLocalPosition(leftHandNode);
         rightHandPrevPos = GetLocalPosition(rightHandNode);
+
+        // Get the Rigidbody component
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody not found on the character. Please add a Rigidbody component.");
+        }
+
+        // Make sure the Rigidbody doesn't rotate due to physics interactions
+        rb.freezeRotation = true;
     }
 
     void Update()
@@ -38,7 +50,12 @@ public class ArmPumpingLocomotion : MonoBehaviour
 
         Vector3 moveDirection = forwardDirection * movementMagnitude * speedMultiplier;
 
-        transform.position += moveDirection * Time.deltaTime;
+        // Use Rigidbody to move the character, which respects collisions and gravity
+        rb.MovePosition(rb.position + moveDirection * Time.deltaTime);
+
+        // Keep the player's upright orientation
+        Vector3 currentRotation = transform.eulerAngles;
+        rb.MoveRotation(Quaternion.Euler(0f, currentRotation.y, 0f));
 
         leftHandPrevPos = leftHandCurrentPos;
         rightHandPrevPos = rightHandCurrentPos;
