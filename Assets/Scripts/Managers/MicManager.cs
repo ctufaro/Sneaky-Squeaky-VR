@@ -10,6 +10,8 @@ public class MicrophonePermission : MonoBehaviour
     public float threshold = 0.02f;  // Higher threshold to filter out background noise
     public float sensitivity = 5.0f; // Lower sensitivity factor to prevent maxing out
     public float smoothFactor = 0.7f; // Higher smoothing factor for gradual response
+    public MonsterAI monsterAI;
+    public GameObject player;
 
     private string microphone;
     private AudioClip micClip;
@@ -134,6 +136,13 @@ public class MicrophonePermission : MonoBehaviour
 
         // Update status text with fun descriptions based on the volume level
         statusText.text = GetFunText(normalizedVolume);
+
+        // Trigger the monster's sound-following behavior if the sound is loud enough
+        if (normalizedVolume < 0.6f)
+        {
+            // Assuming you have a reference to the monster's AI script
+            // monsterAI.FollowSound(player.transform.position);
+        }
     }
 
     string GetFunText(float normalizedVolume)
